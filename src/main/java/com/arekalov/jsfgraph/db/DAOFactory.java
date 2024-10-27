@@ -1,4 +1,4 @@
-package com.worthant.jsfgraph.db;
+package com.arekalov.jsfgraph.db;
 
 /**
  * Factory class for data access object (DAO) instances.

@@ -1,6 +1,6 @@
-package com.worthant.jsfgraph.db;
+package com.arekalov.jsfgraph.db;
 
-import com.worthant.jsfgraph.entity.ResultEntity;
+import com.arekalov.jsfgraph.entity.ResultEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.criteria.Root;

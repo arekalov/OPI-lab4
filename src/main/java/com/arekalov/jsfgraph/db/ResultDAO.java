@@ -1,6 +1,6 @@
-package com.worthant.jsfgraph.db;
+package com.arekalov.jsfgraph.db;
 
-import com.worthant.jsfgraph.entity.ResultEntity;
+import com.arekalov.jsfgraph.entity.ResultEntity;
 
 import java.util.Collection;
 

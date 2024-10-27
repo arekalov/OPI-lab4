@@ -1,4 +1,4 @@
-package com.worthant.jsfgraph.db;
+package com.arekalov.jsfgraph.db;
 
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;

@@ -1,12 +1,10 @@
-package com.worthant.jsfgraph.entity;
+package com.arekalov.jsfgraph.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Objects;
 
 /**
  * Represents a result entity for storing point data.

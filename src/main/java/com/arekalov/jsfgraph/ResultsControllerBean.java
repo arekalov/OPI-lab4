@@ -1,9 +1,9 @@
-package com.worthant.jsfgraph;
+package com.arekalov.jsfgraph;
 
-import com.worthant.jsfgraph.db.DAOFactory;
-import com.worthant.jsfgraph.entity.ResultEntity;
-import com.worthant.jsfgraph.mbeans.*;
-import com.worthant.jsfgraph.utils.AreaChecker;
+import com.arekalov.jsfgraph.db.DAOFactory;
+import com.arekalov.jsfgraph.entity.ResultEntity;
+import com.arekalov.jsfgraph.mbeans.*;
+import com.arekalov.jsfgraph.utils.AreaChecker;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.context.FacesContext;

@@ -1,4 +1,4 @@
-package com.worthant;
+package com.arekalov;
 
 import jakarta.faces.convert.Converter;
 import jakarta.faces.convert.FacesConverter;

@@ -1,4 +1,4 @@
-package com.worthant.jsfgraph;
+package com.arekalov.jsfgraph;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

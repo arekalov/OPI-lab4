@@ -119,7 +119,7 @@
                             <h:outputLabel for="yValue" value="Y: (-3, 5)"
                                            styleClass="block text-sm font-medium text-white dark:text-gray-300 text-center"/>
                             <h:inputText id="yValue" value="#{yCoordinateBean.y}" maxlength="8"
-                                         styleClass="input-text dark:text-gray-200" converter="com.worthant.CommaToDotConverter">
+                                         styleClass="input-text dark:text-gray-200" converter="com.arekalov.CommaToDotConverter">
                                 <f:validateDoubleRange minimum="-3" maximum="5"/>
                             </h:inputText>
                             <h:message for="yValue"

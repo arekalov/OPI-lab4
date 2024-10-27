@@ -1,4 +1,4 @@
-package com.worthant.jsfgraph;
+package com.arekalov.jsfgraph;
 
 
 import jakarta.annotation.PostConstruct;
@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * Managed bean for dealing with the R value in a JSF application.

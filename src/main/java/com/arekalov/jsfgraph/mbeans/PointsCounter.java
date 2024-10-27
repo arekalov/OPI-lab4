@@ -1,12 +1,12 @@
-package com.worthant.jsfgraph.mbeans;
+package com.arekalov.jsfgraph.mbeans;
 
 import javax.management.Notification;
 import javax.management.NotificationBroadcasterSupport;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.Collection;
 
-import com.worthant.jsfgraph.db.ResultDAO;
-import com.worthant.jsfgraph.entity.ResultEntity;
+import com.arekalov.jsfgraph.db.ResultDAO;
+import com.arekalov.jsfgraph.entity.ResultEntity;
 
 public class PointsCounter extends NotificationBroadcasterSupport implements PointsCounterMBean {
     private AtomicInteger totalPoints = new AtomicInteger(0);

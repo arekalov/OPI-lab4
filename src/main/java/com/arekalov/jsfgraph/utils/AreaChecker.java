@@ -1,4 +1,4 @@
-package com.worthant.jsfgraph.utils;
+package com.arekalov.jsfgraph.utils;
 
 /**
  * Utility class to check if a point lies within a defined area.
