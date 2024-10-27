@@ -7,6 +7,8 @@
 # env.bak/
 # venv.bak/
 
+src/main/resources/db.cfg
+
 ### Maven ###
 target/
 pom.xml.tag
