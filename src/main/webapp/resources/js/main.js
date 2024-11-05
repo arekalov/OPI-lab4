@@ -21,7 +21,7 @@ import {
 
 $(document).ready(() => {
     updateDateTime();
-    setInterval(updateDateTime, 1000);
+    setInterval(updateDateTime, 11000);
     setupSmoothScrolling();
     setupZoomButtons();
     setupGraphModes();

@@ -10,7 +10,6 @@
 <h:head>
     <title>Web lab 3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" type="image/png" href="#{request.contextPath}/resources/images/favicon.png" />
     <h:outputStylesheet library="styles" name="main.css"/>
     <h:outputStylesheet>
         .glow:hover {
@@ -22,8 +21,9 @@
 <h:body>
 
     <!-- Link to main.xhtml -->
-    <h:panelGroup layout="block" styleClass="fixed" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
-        <h:link styleClass="bg-slate-800 text-black px-6 py-3 border border-slate-400 rounded"
+    <h:panelGroup layout="block" styleClass="fixed" style="top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-family: sans-serif; font-style: normal;">
+        <h:link style="background-color: #c7dada;" styleClass="text-black px-6 py-3 border border-slate-400 rounded"
                 value="Main page" outcome="goToMain"/>
     </h:panelGroup>
 
