@@ -63,8 +63,8 @@ window.drawGraph = function drawGraph(R) {
     ctx.fillStyle = "#FFFF0010"; // yellow with 10% opacity
     ctx.beginPath();
     ctx.moveTo(width / 2, height / 2);
-    ctx.lineTo(width / 2 + R / 2 * dynamicScalingFactor, height / 2);
-    ctx.lineTo(width / 2, height / 2 + R * dynamicScalingFactor);
+    ctx.lineTo(width / 2, height / 2 + R / 2 * dynamicScalingFactor);
+    ctx.lineTo(width / 2 - R * dynamicScalingFactor, height / 2);
     ctx.closePath();
     ctx.fill();
     ctx.strokeStyle = "#FFFF00";
@@ -72,14 +72,14 @@ window.drawGraph = function drawGraph(R) {
 
     // Rectangle (upper right)
     ctx.fillStyle = "#0000FF10"; // blue with 10% opacity
-    ctx.fillRect(width / 2, height / 2 - R / 2 * dynamicScalingFactor, R * dynamicScalingFactor, R / 2 * dynamicScalingFactor);
+    ctx.fillRect(width / 2, height / 2, R/2 * dynamicScalingFactor, R * dynamicScalingFactor);
     ctx.strokeStyle = "#0000FF";
-    ctx.strokeRect(width / 2, height / 2 - R / 2 * dynamicScalingFactor, R * dynamicScalingFactor, R / 2 * dynamicScalingFactor);
+    ctx.strokeRect(width / 2, height / 2, R/2 * dynamicScalingFactor, R * dynamicScalingFactor);
 
     // Semicircle (lower left)
     ctx.fillStyle = "#39FF1410"; // green with 10% opacity
     ctx.beginPath();
-    ctx.arc(width / 2, height / 2, R / 2 * dynamicScalingFactor, 0.5 * Math.PI, Math.PI);
+    ctx.arc(width / 2, height / 2, R * dynamicScalingFactor, Math.PI, 1.5 * Math.PI);
     ctx.lineTo(width / 2, height / 2);
     ctx.closePath();
     ctx.fill();

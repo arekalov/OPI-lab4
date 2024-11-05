@@ -18,16 +18,16 @@ public class AreaChecker {
             return false;
         }
         // Check for the rectangle in the top-right quadrant
-        if (x >= 0 && y >= 0) {
-            return x <= r && y <= r / 2;
+        if (x >= 0 && y <= 0) {
+            return x <= r / 2 && y >= -r;
         }
         // Check for the semicircle in the bottom-left quadrant
-        else if (x <= 0 && y <= 0) {
-            return (x * x + y * y) <= (r * r) / 4;
+        else if (x <= 0 && y >= 0) {
+            return (x * x + y * y) <= (r * r);
         }
         // Check for the triangle in the bottom-right quadrant
-        else if (x >= 0 && y <= 0) {
-            return y >= (2*x - r);
+        else if (x <= 0 && y <= 0) {
+            return y >= ((-0.5*x-0.5*r));
         }
         return false;
     }

@@ -18,7 +18,7 @@ public class XCoordinateBean implements Serializable {
 
     public void validateXBeanValue(Object o){
         if (o == null){
-            FacesMessage message = new FacesMessage("X value should be in (-5, 5) interval");
+            FacesMessage message = new FacesMessage("X value should be in (-3, 5) interval");
             throw new ValidatorException(message);
         }
     }

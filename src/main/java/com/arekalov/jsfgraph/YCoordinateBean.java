@@ -18,7 +18,7 @@ public class YCoordinateBean implements Serializable {
 
     public void validateYBeanValue(Object o){
         if (o == null){
-            FacesMessage message = new FacesMessage("Y value should be in (-3, 5) interval");
+            FacesMessage message = new FacesMessage("Y value should be in (-5, 3) interval");
             throw new ValidatorException(message);
         }
     }

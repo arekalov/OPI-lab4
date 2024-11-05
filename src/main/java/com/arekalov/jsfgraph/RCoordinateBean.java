@@ -23,7 +23,7 @@ public class RCoordinateBean implements Serializable {
 
     public void validateRBeanValue(FacesContext facesContext, UIComponent uiComponent, Object o){
         if (o == null){
-            FacesMessage message = new FacesMessage("R value should be in (1, 4) interval");
+            FacesMessage message = new FacesMessage("R value should be in (1, 5) interval");
             throw new ValidatorException(message);
         }
     }
