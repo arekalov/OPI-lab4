@@ -1,3 +1,5 @@
+import com.arekalov.jsfgraph.BuildParams
+import com.arekalov.jsfgraph.Tasks
 import org.gradle.process.internal.ExecException
 import java.io.ByteArrayOutputStream
 
@@ -13,21 +15,20 @@ repositories {
         url = uri("https://repo.maven.apache.org/maven2/")
     }
 }
+val lab3TasksGroup = properties[BuildParams.TASKS_GROUP_NAME] as String
 
-val lab3TasksGroup = "lab3"
-
-tasks.register("compile") {
+tasks.register(Tasks.COMPILE) {
     group = lab3TasksGroup
-    dependsOn("compileJava")
+    dependsOn(tasks.compileJava)
 }
 
-tasks.register<Jar>("customJar") {
+tasks.register<Jar>(Tasks.CUSTOM_JAR) {
     group = lab3TasksGroup
     from(sourceSets.main.get().output)
 
     manifest {
         attributes(
-            "Implementation-Title" to "My Application",
+            "Implementation-Title" to project.name,
             "Implementation-Version" to project.version,
             "Main-Class" to "com.arekalov.jsfgrap.CoordinateHandlerBean"
         )
@@ -38,14 +39,14 @@ tasks.register<Jar>("customJar") {
     archiveClassifier.set("custom")
 }
 
-tasks.named("build") {
+tasks.named(Tasks.BUILD) {
     group = lab3TasksGroup
-    dependsOn("customJar")
+    dependsOn(Tasks.CUSTOM_JAR)
 }
 
 tasks.war {
     group = lab3TasksGroup
-    from(tasks.named("customJar").map { it.outputs.files }) {
+    from(tasks.named(Tasks.CUSTOM_JAR).map { it.outputs.files }) {
         into("WEB-INF/lib")
     }
 }
@@ -59,12 +60,9 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.register("music") {
+tasks.register<MusicTask>(Tasks.MUSIC) {
     group = lab3TasksGroup
     dependsOn(tasks.build)
-    doLast {
-        println("HOY!")
-    }
 }
 
 tasks.register("history") {
