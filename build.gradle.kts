@@ -73,14 +73,20 @@ tasks.register("history") {
     doLast {
         try {
             println("Running build task...")
+            val baos = ByteArrayOutputStream()
             exec {
                 commandLine("./gradlew", "build")
+                standardOutput = baos
+                errorOutput = baos
             }
 
             println("Build was successful or already up to date. No rollback needed.")
-        } catch (e: ExecException) {
+        } catch (e: Exception) {
             println("Build failed. Attempting to rollback...")
             rollbackAndBuild()
+        } finally {
+
+            println("Task 'history' completed successfully in reporting.")
         }
     }
 }
@@ -89,6 +95,9 @@ fun rollbackAndBuild() {
     val commits = gitCommand("rev-list HEAD")?.lines() ?: return
     var lastSuccessfulCommit: String? = null
     val currentlyCheckedOutCommit = gitCommand("rev-parse HEAD")!!.trim()
+
+    gitCommand("add .")
+    gitCommand("commit -m temp")
 
     for (commit in commits) {
         gitCommand("checkout $commit")
@@ -103,15 +112,12 @@ fun rollbackAndBuild() {
 
     if (lastSuccessfulCommit == null) {
         println("No successful build found.")
-        val earliestCommit = commits.last()
-        val nextCommit = commits[commits.indexOf(earliestCommit) - 1]
-        val diff = gitCommand("diff $earliestCommit $nextCommit")
-        val diffFile = project.file("build/failed_build_diff.txt")
+    } else {
+        val diff = gitCommand("diff $currentlyCheckedOutCommit $lastSuccessfulCommit")
+        val diffFile = project.file("build/successful_build_diff.txt")
         diffFile.writeText(diff ?: "No diff available.")
-        println("Diff between $earliestCommit and $nextCommit has been saved to ${diffFile.path}")
+        println("Diff between $currentlyCheckedOutCommit and $lastSuccessfulCommit has been saved to ${diffFile.path}")
     }
-
-    gitCommand("checkout $currentlyCheckedOutCommit")
 }
 
 private fun gitCommand(command: String): String? {
@@ -130,8 +136,11 @@ private fun gitCommand(command: String): String? {
 
 private fun tryBuild(): Boolean {
     return try {
+        val baos = ByteArrayOutputStream()
         exec {
             commandLine("./gradlew", "clean", "build")
+            standardOutput = baos
+            errorOutput = baos
         }
         true
     } catch (e: ExecException) {
