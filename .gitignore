@@ -9,6 +9,7 @@
 
 src/main/resources/db.cfg
 
+DATA.md
 ### Maven ###
 target/
 pom.xml.tag
