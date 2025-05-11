@@ -1,3 +1,6 @@
+### Как поднять лабу
+PS: На маке и виндовсе не завелось. На виртуалке с убунтой все норм.
+
 1. Создать новый `.war` файл
    ```bash
    ./gradlew clean build
@@ -27,7 +30,7 @@
    ```
 5. Запустить Jconsole
    ```bash
-   jconsole -J-Djava.class.path=/Users/arekalov/Itmo/4/OPI/lab4/jboss-cli-client.jar
+   jconsole -J-Djava.class.path=/home/arekalov/IdeaProjects/OPI-lab4/jboss-cli-client.jar
    ```
 6. Ввести `service:jmx:remote+http://0.0.0.0:28603`
-7. Само приложение досутпно на http://127.0.0.1:28600/interactive-graph-ui-1.0-SNAPSHOT
+7. Само приложение доcтупно на http://127.0.0.1:28600/interactive-graph-ui-1.0-SNAPSHOT
