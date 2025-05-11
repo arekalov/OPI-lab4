@@ -51,6 +51,8 @@ PS: На маке и виндовсе не завелось. На виртуал
 4. ```bash
       /home/arekalov/IdeaProjects/localWf/wildfly-preview-26.1.3.Final/bin/standalone.sh
       -b 0.0.0.0 \
+      -Xms256m \
+      -Xmx1024m\
       -Dcom.sun.management.jmxremote \
       -Dcom.sun.management.jmxremote.authenticate=false \
       -Dcom.sun.management.jmxremote.ssl=false \
@@ -59,4 +61,8 @@ PS: На маке и виндовсе не завелось. На виртуал
       -Djava.rmi.server.hostname=0.0.0.0 \
       -Djboss.bind.address.management=0.0.0.0 \
       -Djboss.bind.address=0.0.0.0
+   ```
+5. Само приложение доcтупно на http://127.0.0.1:28600/interactive-graph-ui-1.0-SNAPSHOT
+6. ```bash
+   visualvm
    ```
