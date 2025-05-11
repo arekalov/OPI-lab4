@@ -104,13 +104,19 @@ public class ResultsControllerBean implements Serializable {
      */
     public void updateCanvas(double r) {
         for (ResultEntity en : results) {
-            boolean result = AreaChecker.isInArea(en.getX(), en.getY(), r);
+            boolean wasInArea = en.isResult();
+            boolean nowInArea = AreaChecker.isInArea(en.getX(), en.getY(), r);
             en.setR(r);
-            en.setResult(result);
-
+            en.setResult(nowInArea);
+            if (wasInArea && !nowInArea) {
+                // Точка вышла за границы области при изменении радиуса
+                if (pointsCounter instanceof com.arekalov.jsfgraph.mbeans.PointsCounter) {
+                    ((com.arekalov.jsfgraph.mbeans.PointsCounter) pointsCounter).notifyPointOutOfArea(en.getX(), en.getY(), r);
+                }
+            }
             String script = String.format(
                     Locale.US, "window.drawDotOnCanvas(%f, %f, %f, %b, true);",
-                    en.getX(), en.getY(), r, result);
+                    en.getX(), en.getY(), r, nowInArea);
             System.out.println("Script: " + script);
             FacesContext.getCurrentInstance()
                     .getPartialViewContext()

@@ -11,7 +11,6 @@ import com.arekalov.jsfgraph.entity.ResultEntity;
 public class PointsCounter extends NotificationBroadcasterSupport implements PointsCounterMBean {
     private AtomicInteger totalPoints = new AtomicInteger(0);
     private AtomicInteger missedPoints = new AtomicInteger(0);
-    private int consecutiveMisses = 0;
     private long sequenceNumber = 1;
     private ResultDAO resultDAO;
 
@@ -35,7 +34,6 @@ public class PointsCounter extends NotificationBroadcasterSupport implements Poi
     public void resetAndInitializeCounts() {
         totalPoints.set(0);
         missedPoints.set(0);
-        consecutiveMisses = 0;
         initializeCounts();
     }
 
@@ -57,17 +55,21 @@ public class PointsCounter extends NotificationBroadcasterSupport implements Poi
     @Override
     public void incrementMissedPoints() {
         missedPoints.incrementAndGet();
-        consecutiveMisses++;
-        if (consecutiveMisses == 2) {
-            Notification n = new Notification("ConsecutiveMisses", this, sequenceNumber++,
-                    System.currentTimeMillis(), "Two consecutive misses occurred");
-            sendNotification(n);
-            consecutiveMisses = 0;
-        }
+    }
+
+    public void notifyPointOutOfArea(double x, double y, double r) {
+        Notification n = new Notification(
+            "PointOutOfArea",
+            this,
+            sequenceNumber++,
+            System.currentTimeMillis(),
+            "Point out of area after radius change: (" + x + ", " + y + ", r=" + r + ")"
+        );
+        sendNotification(n);
     }
 
     @Override
     public void resetConsecutiveMisses() {
-        consecutiveMisses = 0;
+        // Метод больше не используется, оставлен для совместимости с интерфейсом
     }
 }
